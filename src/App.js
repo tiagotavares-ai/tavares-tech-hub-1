@@ -382,4 +382,72 @@ function App() {
             <p className="text-blue-100 text-lg max-w-2xl mx-auto mb-6">
               Comprometido com a eficiência, inovação e o sucesso dos pequenos negócios de Massapê-CE e região.
             </p>
-          
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div className="text-center">
+              <MapPin className="w-6 h-6 mx-auto mb-2 text-blue-300" />
+              <h5 className="font-semibold mb-1">Localização</h5>
+              <p className="text-blue-100">Mumbaba de Baixo</p>
+              <p className="text-blue-100">Massapê-CE</p>
+            </div>
+            <div className="text-center">
+              <Phone className="w-6 h-6 mx-auto mb-2 text-blue-300" />
+              <h5 className="font-semibold mb-1">WhatsApp</h5>
+              <a 
+                href={whatsappLink('Olá! Gostaria de mais informações.')}
+                className="text-blue-100 hover:text-white transition-colors"
+                data-testid="footer-whatsapp-link"
+              >
+                (88) 98234-0081
+              </a>
+            </div>
+            <div className="text-center">
+              <Mail className="w-6 h-6 mx-auto mb-2 text-blue-300" />
+              <h5 className="font-semibold mb-1">Contato</h5>
+              <p className="text-blue-100">Tiago Tavares</p>
+              <p className="text-blue-100 text-sm">Especialista em Soluções Digitais</p>
+            </div>
+          </div>
+
+          <div className="text-center pt-8 border-t border-blue-800">
+            <p className="text-blue-200">
+              © 2025 Tavares Tech Hub. Simplificando a vida através da tecnologia.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+const ServiceCard = ({ icon, title, description, price, whatsappMessage, testId, featured }) => {
+  return (
+    <div 
+      className={`bg-white rounded-xl p-6 transition-all hover:shadow-xl ${
+        featured ? 'border-2 border-blue-900 shadow-lg' : 'border border-gray-200 shadow-md'
+      }`}
+      data-testid={testId}
+    >
+      <div className="text-blue-900 mb-4">{icon}</div>
+      <h4 className="text-xl font-bold text-gray-900 mb-2">{title}</h4>
+      <p className="text-gray-600 mb-4 text-sm leading-relaxed">{description}</p>
+      <div className="text-2xl font-bold text-blue-900 mb-4">{price}</div>
+      <a
+        href={whatsappLink(whatsappMessage)}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`block w-full py-3 rounded-lg transition-colors font-semibold text-center ${
+          featured 
+            ? 'bg-blue-900 text-white hover:bg-blue-800' 
+            : 'bg-gray-900 text-white hover:bg-gray-800'
+        }`}
+        data-testid={`${testId}-btn`}
+      >
+        Solicitar Serviço
+      </a>
+    </div>
+  );
+};
+
+export default App;
